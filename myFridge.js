@@ -13,7 +13,7 @@ if (Meteor.isClient) {
         }
     });
     
-    Template.fridge.onRendered({
+    Template.fridge.onRendered(function(){
         var templateInstance = this;
         templateInstance.$('#fridge').droppable({
             drop: function(evt, ui){
@@ -24,7 +24,7 @@ if (Meteor.isClient) {
         });
     });
 
-    Template.productList.onRendered({
+    Template.productList.onRendered(function(){
         var templateInstance = this;
         templateInstance.$('#supermarket').droppable({
             drop: function(evt, ui){
@@ -35,16 +35,13 @@ if (Meteor.isClient) {
         });
     });
 
-    Template.productListItem.onRendered({
+    Template.productListItem.onRendered(function(){
         var templateInstance = this;
         templateInstance.$('.draggable').draggable({
         cursor: 'move',
         helper: 'clone'
         });
     });
-
-
- 
 }
 
 if (Meteor.isServer) {
@@ -53,20 +50,24 @@ if (Meteor.isServer) {
         
         Products.insert({
             name: 'Milk',
-            img: '/images/milk.png',
+            img: '/milk.png',
             place: 'supermarket'
         });
         Products.insert({
             name: 'Bread',
-            img: '/images/bread.png',
-            place: 'fridge'
-        });
-        /*Products.insert({
-        
+            img: '/bread.png',
+            place: 'supermarket'
         });
         Products.insert({
+            name: 'Banana',
+            img: '/banana.png',  
+            place: 'supermarket'
+        });
+        Products.insert({
+            name: 'Juice',
+            img: '/juice.png',
+            place: 'supermarket'
+        });   
         
-        });*/
-    
     });
 }
